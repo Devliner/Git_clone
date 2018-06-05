@@ -7,6 +7,6 @@
 public class adsada {
 
     public static void main(String[] args) {
-        System.out.println("push correct");
+        System.out.println("push correct ssss");
     }
 }
