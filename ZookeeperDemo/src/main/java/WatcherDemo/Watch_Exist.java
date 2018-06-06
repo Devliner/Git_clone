@@ -24,7 +24,7 @@ public class Watch_Exist implements Watcher{
 
         zooKeeper.exists(path,new Watch_Exist());
 
-        zooKeeper.create(path,"existWatch".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE,CreateMode.PERSISTENT);
+        //zooKeeper.create(path,"existWatch".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE,CreateMode.PERSISTENT);
         zooKeeper.setData(path,"existWatch setData".getBytes(),-1);
         zooKeeper.delete(path,-1);
 
