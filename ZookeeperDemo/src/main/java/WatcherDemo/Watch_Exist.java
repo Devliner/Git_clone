@@ -1,7 +1,6 @@
 package WatcherDemo;
 
 import org.apache.zookeeper.*;
-import sun.swing.table.DefaultTableCellHeaderRenderer;
 import utils.Constants;
 
 import java.io.IOException;
@@ -11,7 +10,7 @@ import java.util.concurrent.CountDownLatch;
  * author:WangLei
  * date:2018/6/6
  * time:8:55
- * description:
+ * description:测试创建Watch 的 Exist API，对应的三种 EventType。
  */
 public class Watch_Exist implements Watcher{
     private static CountDownLatch connectedSemaphore = new CountDownLatch(1);
@@ -19,13 +18,20 @@ public class Watch_Exist implements Watcher{
 
     public static void main(String[] args) throws IOException, InterruptedException, KeeperException {
 
+
         ZooKeeper zooKeeper = new ZooKeeper(Constants.ZOOKEEPER_ADRESS, 5000, new Watch_Exist(), false);
         connectedSemaphore.await();
 
+        // 创建路径
         zooKeeper.exists(path,new Watch_Exist());
+        zooKeeper.create(path,"existWatch".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE,CreateMode.PERSISTENT);
 
-        //zooKeeper.create(path,"existWatch".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE,CreateMode.PERSISTENT);
+        // 修改数据
+        zooKeeper.exists(path,new Watch_Exist());
         zooKeeper.setData(path,"existWatch setData".getBytes(),-1);
+
+        // 删除数据
+        zooKeeper.exists(path,new Watch_Exist());
         zooKeeper.delete(path,-1);
 
         Thread.sleep(3000);
