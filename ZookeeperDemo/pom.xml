@@ -40,13 +40,17 @@
             <version>${zkClient.version}</version>
         </dependency>
 -->
-<!--
         <dependency>
             <groupId>org.apache.curator</groupId>
-            <artifactId>curator-franework</artifactId>
+            <artifactId>curator-framework</artifactId>
             <version>${curator.version}</version>
         </dependency>
--->
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>14.0.1</version>
+        </dependency>
 
     </dependencies>
 
