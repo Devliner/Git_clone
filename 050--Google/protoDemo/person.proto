@@ -1,0 +1,9 @@
+
+
+import "owner.proto";
+
+message GetPersonInfomation {
+	required SetOwnerRequestProto oo = 1;
+	required string name = 2;
+	required string age = 3;
+}

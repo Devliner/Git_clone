@@ -1,0 +1,17 @@
+
+
+message socketRequestProto{
+    required string name = 1;
+    required string age = 2;
+    required string sex = 3;
+}
+
+message socketResponseProto{
+    required string responseId = 1;
+}
+
+
+service ClientServerProtocol{
+    rpc sendData(socketRequestProto)
+        returns(socketResponseProto);
+}

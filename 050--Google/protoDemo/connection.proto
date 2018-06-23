@@ -1,0 +1,22 @@
+
+syntax ="proto2";
+
+option java_outer_classname = "ClientServerProtocolProtos";
+option java_generic_services = true;
+option java_generate_equals_and_hash = true;
+
+message socketRequestProto{
+    required string name = 1;
+    required string age = 2;
+    required string sex = 3;
+}
+
+message socketResponseProto{
+    required string responseId = 1;
+}
+
+
+service ClientServerProtocol{
+    rpc sendData(socketRequestProto)
+        returns(socketResponseProto);
+}
